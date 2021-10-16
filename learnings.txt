@@ -1,0 +1,18 @@
+web1 ansible_host=server1.company.com ansible_connection=ssh ansible_user=root ansible_ssh_pass=Password123!
+web2 ansible_host=server2.company.com ansible_connection=ssh ansible_user=root ansible_ssh_pass=Password123!
+db1 ansible_host=server3.company.com ansible_connection=winrm ansible_user=administrator ansible_password=Password123!
+db2 ansible_host=server4.company.com ansible_connection=winrm ansible_user=administrator ansible_password=Password123!
+
+[group_name1]
+web1
+web2
+
+[group_name2]
+db1
+db2
+
+[group_name3:children]
+group_name1
+group_name2
+
+

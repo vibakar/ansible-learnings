@@ -1,0 +1,28 @@
+web1 ansible_host=server1.company.com ansible_connection=ssh ansible_user=root ansible_ssh_pass=Password123!
+db1 ansible_host=server4.company.com ansible_connection=winrm ansible_user=administrator ansible_password=Password123!
+local ansible_host=localhost ansible_connection=local
+
+#For localhost connection: ansible_connection=local
+#For linux connection: ansible_connection=ssh ansible_ssh_pass=<password>
+#For windows connection: ansible_connection=winrm ansible_password=<password>
+
+#web1 and db1 is the alias
+
+#Basic command to test sever connection:
+ansible -i inventory.txt -m ping <alias>
+
+#group name syntax:
+[group_name1]
+web1
+web2
+
+[group_name2]
+db1
+db2
+
+# Combining groups
+[group_name3:children]
+group_name1
+group_name2
+
+
